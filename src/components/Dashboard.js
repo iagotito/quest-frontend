@@ -8,37 +8,49 @@ const Dashboard = () => {
   const [newTodo, setNewTodo] = useState();
 
   const handleAddTodo = () => {
-    if (newTodo && newTodo !== "" && !todos.includes(newTodo)) {
-      let allTodos = [...todos];
-      allTodos.push(newTodo);
-      setTodos(allTodos);
+    let currentTodo = {text:newTodo, complete:false};
+    if (newTodo && currentTodo.text !== "") {
+      let updatedTodos = [...todos];
+      updatedTodos.push(currentTodo);
+      setTodos(updatedTodos);
     }
   }
   
   const handleRemoveTodo = (index) => {
+    let updatedTodos = [...todos];
+    updatedTodos.splice(index, 1);
+    setTodos(updatedTodos);
+  }
+
+  const handleToggleTodo = (index) => {
     let allTodos = [...todos];
-    allTodos.splice(index, 1);
+    allTodos[index].complete = !allTodos[index].complete;
     setTodos(allTodos);
   }
 
   return(
     <div>
       <Container>
-        <h1>Quest</h1>
-        <Button className="mb-3" variant="primary" size="md" block> Sign Up </Button>
+        <ButtonToolbar className="justify-content-between">
+          <h1>Quest</h1>
+          <Button className="mb-3" size="md">SignUp</Button>
+        </ButtonToolbar>
 
         <InputGroup className="mb-3">
           <FormControl className="mb-3" placeholder="Todo" onChange={e => setNewTodo(e.target.value.trim())}/>
-          <Button className="mb-3" onClick={handleAddTodo}>Add todo</Button>
+            <Button className="mb-3" size="sm" onClick={handleAddTodo}>Add Todo</Button>
         </InputGroup>
 
         <ListGroup>
           {todos.map((currentTodo, index) => (
             <ListGroup.Item key={index}>
-              <ButtonToolbar className="justify-content-between" aria-label="Toolbar with button groups">
-                <span>{currentTodo}</span>
-                <ButtonGroup className="mr-3"size="sm" aria-label="First group">
-                  <Button className="mr-2" onClick={() => handleRemoveTodo(index)}> Remove </Button>
+              <ButtonToolbar className="justify-content-between">
+                <span className="text-concat">
+                  {currentTodo.complete ? <s>{currentTodo.text}</s> : currentTodo.text}
+                </span>
+                <ButtonGroup className="mr-3" size="sm">
+                  <Button className="mr-3" onClick={() => handleRemoveTodo(index)}> Remove </Button>
+                  <Button className="mr-3" onClick={() => handleToggleTodo(index)}> Toggle </Button>
                 </ButtonGroup>
               </ButtonToolbar>
             </ListGroup.Item>
