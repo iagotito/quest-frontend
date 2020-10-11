@@ -9,9 +9,8 @@ User's interface of a system to manage activities and TODO lists.
 Access the [backend repository](https://github.com/iagotito/quest-backend).
 
 ## To run execute:
-> sudo npm install
-
-> sudo npm start
+* sudo npm install
+* sudo npm start
 
 ## License
 
