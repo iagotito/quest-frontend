@@ -1,13 +1,13 @@
 import React, { useState} from 'react';
 import { withRouter } from 'react-router-dom';
-import { Container, Button, InputGroup, FormControl, ListGroup } from 'react-bootstrap';
+import { Container, Button, InputGroup, FormControl, ListGroup, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
 import "../style.css";
 
 const Dashboard = () => {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState();
 
-  let handleAddTodo = () => {
+  const handleAddTodo = () => {
     if (newTodo && newTodo !== "" && !todos.includes(newTodo)) {
       let allTodos = [...todos];
       allTodos.push(newTodo);
@@ -15,6 +15,12 @@ const Dashboard = () => {
     }
   }
   
+  const handleRemoveTodo = (index) => {
+    let allTodos = [...todos];
+    allTodos.splice(index, 1);
+    setTodos(allTodos);
+  }
+
   return(
     <div>
       <Container>
@@ -29,7 +35,12 @@ const Dashboard = () => {
         <ListGroup>
           {todos.map((currentTodo, index) => (
             <ListGroup.Item key={index}>
-              <span>{currentTodo}</span>
+              <ButtonToolbar className="justify-content-between" aria-label="Toolbar with button groups">
+                <span>{currentTodo}</span>
+                <ButtonGroup className="mr-3"size="sm" aria-label="First group">
+                  <Button className="mr-2" onClick={() => handleRemoveTodo(index)}> Remove </Button>
+                </ButtonGroup>
+              </ButtonToolbar>
             </ListGroup.Item>
           ))}
         </ListGroup>
