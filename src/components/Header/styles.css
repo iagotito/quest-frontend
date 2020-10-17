@@ -1,0 +1,28 @@
+#main-header {
+    height: 60px;
+    width: 100%;
+    background: #004ea3;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFF;
+    display: flex;
+    align-items: center;
+}
+
+#title-div {
+    height: 60px;
+    width: 50%;
+    display: flex;
+    justify-content: left;
+    padding-left: 2%;
+    align-items: center;
+}
+
+#user-info-div {
+    height: 60px;
+    width: 50%;
+    display: flex;
+    justify-content: right;
+    padding-right: 2%;
+    align-items: center;
+}

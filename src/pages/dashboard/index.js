@@ -1,7 +1,7 @@
-import React, { useState} from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
 import { Container, Button, InputGroup, FormControl, ListGroup, ButtonGroup, ButtonToolbar } from 'react-bootstrap';
-import "../style.css";
+import { Link } from 'react-router-dom';
+import "./style.css";
 
 const Dashboard = () => {
   const [todos, setTodos] = useState([]);
@@ -30,12 +30,10 @@ const Dashboard = () => {
 
   return(
     <div>
+      <Link to='/'>
+        <Button>Back to Home page</Button>
+      </Link>
       <Container>
-        <ButtonToolbar className="justify-content-between">
-          <h1>Quest</h1>
-          <Button className="mb-3" size="md">SignUp</Button>
-        </ButtonToolbar>
-
         <InputGroup className="mb-3">
           <FormControl className="mb-3" placeholder="Todo" onChange={e => setNewTodo(e.target.value.trim())}/>
             <Button className="mb-3" size="sm" onClick={handleAddTodo}>Add Todo</Button>
@@ -62,4 +60,4 @@ const Dashboard = () => {
   )
 };
 
-export default withRouter(Dashboard);
+export default Dashboard;
