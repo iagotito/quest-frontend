@@ -11,9 +11,6 @@ const Header = () => {
     return(
         <div id='main-header'>
             <div id='title-div'>QUEST ACCEPTED!</div>
-            <div id='user-info-div'>
-                <button id='sign-up-btn' onClick={handleSignUp}>Sign up</button>
-            </div>
         </div>
     )
 }

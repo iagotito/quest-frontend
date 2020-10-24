@@ -17,12 +17,3 @@
     padding-left: 2%;
     align-items: center;
 }
-
-#user-info-div {
-    height: 60px;
-    width: 50%;
-    display: flex;
-    justify-content: right;
-    padding-right: 2%;
-    align-items: center;
-}
