@@ -30,8 +30,6 @@ const Login = () => {
             localStorage.setItem('@quest/user-jwt', data.data.jwt);
             history.push('/');
         })
-
-
     }
 
     return (

@@ -1,28 +1,33 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import './styles.css';
 
 const Home = () => {
-  return(
-    <div className="home-div">
-      <h1>Quest home page</h1>
-      <br/>
-      <Link to='/dashboard'>
-        <Button id='see-dashboard-btn'>See quests dashboard</Button>
-      </Link>
-      <br/><br/>
-      <div className="buttons">
-        <Link to='/register'>
-          <Button className='register-btn'>Register</Button>
-        </Link>
-        <Link to='/login'>
-          <Button className='login-btn'>Login</Button>
-        </Link>
-      </div>
-    </div>
-  )
+    const history = useHistory();
+
+    if (localStorage.getItem('@quest/user-jwt') === 'null') {
+        history.push('/welcome')
+    }
+
+    function handleLogout(e) {
+        e.preventDefault();
+        console.log(localStorage.setItem('@quest/user-jwt', 'null'));
+        history.push('/welcome')
+    }
+
+    return (
+        <div className="welcome-div">
+            <h1>Quest Welcome page</h1>
+            <br/>
+            <Link to='/dashboard'>
+                <Button id='see-dashboard-btn'>See quests dashboard</Button>
+            </Link>
+            <Button id='logout' onClick={handleLogout}>Logout</Button>
+        </div>
+    )
 };
 
 export default Home;
