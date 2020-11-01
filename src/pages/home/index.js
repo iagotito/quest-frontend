@@ -14,7 +14,7 @@ const Home = () => {
 
     function handleLogout(e) {
         e.preventDefault();
-        console.log(localStorage.setItem('@quest/user-jwt', 'null'));
+        localStorage.setItem('@quest/user-jwt', 'null');
         history.push('/welcome')
     }
 
